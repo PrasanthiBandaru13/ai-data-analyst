@@ -1,5 +1,5 @@
 #  AI Data Analyst
-
+🚀 Live Demo: https://ai-data-analyst-cjbmuddyvqf2bykqybpgxl.streamlit.app/
 Ask questions in natural language and analyze your dataset.
 
 ## Features
