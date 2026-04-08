@@ -66,15 +66,14 @@ def _detect_column_types(df: pd.DataFrame):
     datetime = []
     # try to infer datetime columns
     for c in df.columns:
-        if np.issubdtype(df[c].dtype, np.datetime64):
+        if pd.api.types.is_datetime64_any_dtype(df[c]):
             datetime.append(c)
         else:
-            # try to parse small sample as date
             try:
                 sample = df[c].dropna().astype(str).iloc[:20]
                 parsed = pd.to_datetime(sample, errors="coerce")
                 if parsed.notna().sum() >= max(1, min(5, len(sample)//2)):
-                    datetime.append(c)
+                   datetime.append(c)
             except Exception:
                 pass
     # categoricals: low cardinality non-numeric
